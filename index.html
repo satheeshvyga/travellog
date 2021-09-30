@@ -1,0 +1,468 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Travel Log</title>
+    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="crud.css">
+
+    
+  <link rel="icon" href="Icon blue.png" type="image/gif" sizes="16x16">
+
+
+
+  </head>
+  <body ng-app="app">
+<div id="allPage">
+ <div ><!--nameless div for sticky working -->
+ <div class="sticky"><img id="titleImg" src="Title.png" alt="Travellog">
+    <div class="mBanner">
+     
+      <div  id= "bannerYear"class="yearSelector">  <h4 id="prev" title="Change Year-">«</h4> <h4 id="yearSelect">2000</h4 > <h4 id="next" title="Change Year+">»</h4>
+      </div>
+      
+      <div id ="bannerMonth"class= "monthSelector">
+        <select  id="monthSelect" title="Select Month">
+         <option value="1">January</option>
+         <option value="2">February</option>
+         <option value="3">March</option>
+         <option value="4">April</option>
+         <option value="5">May</option>
+         <option value="6">June</option>
+         <option value="7">July</option>
+         <option value="8">August</option>
+         <option value="9">September</option>
+         <option value="10">October</option>
+         <option value="11">November</option>
+         <option value="12">December</option>
+       </select>
+      </div>
+      <i href="#addItemModal" id = "maddItemBtn" data-toggle="modal" class="fa fa-pencil-square-o fa-2x" aria-hidden="true"title="New Entry"></i>
+     <i  id="printRep" onclick="save()"class="fa fa-download fa-2x" aria-hidden="true" title="Print"></i>  
+    </div>
+  
+   </div>
+
+
+    <!---------------------------------------------------- mobile banner End----------------------------->
+    <div><img id="noRImg"src="xx.png" alt="NO record" style="width: 100%; max-width: 346px; margin: auto;"></div>
+    <div id="mobileViewArea"class="visible-xs"></div>
+  
+
+    <div class="container-fluid">
+  <Div class="container">
+     
+
+  <div class="tableContainer hidden-xs">
+        <table id = "itemTable"class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Mode</th>
+              <th>Km</th>
+              <th>Purpose</th>
+              <th>Actions</th>
+              
+              
+          
+             
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+          </table>
+        
+    </div><!------table container End--------------------->
+
+
+ 
+
+
+  </Div><!------container ---End------------------------------------>
+</div> <!----container fluid End---------------------------->
+</div><!---name less div to Stick head line ------------------------->
+ <!--</div> -->       
+    <!--</div>-->
+
+
+<!-------------------------------------------------------------calender stats ------------------------------->
+<div id="myCalender" class="modal fade">
+
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+
+
+<div class="modal-header">            
+  <h4 class="modal-title" id="calenderTitle"></h4>
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+</div>
+
+
+<div   class="modal-body"> 
+
+
+<div class="week w1">
+
+  <button onclick="gpress(1)" Class="day d1" id="b1">1</button>
+  <button onclick="gpress(2)" Class="day d2"id="b2">2</button>
+  <button onclick="gpress(3)"Class="day d3"id="b3">3</button>
+  <button onclick="gpress(4)"Class="day d4"id="b4">4</button>
+  <button onclick="gpress(5)"Class="day d5"id="b5">5</button>
+  <button onclick="gpress(6)"Class="day d6"id="b6">6</button>
+  <button onclick="gpress(7)"Class="day d7"id="b7">7</button>
+
+</div>
+
+<div class="week w2">
+  <button onclick="gpress(8)" Class="day d1" id="b8">8</button>
+  <button onclick="gpress(9)"Class="day d2"id="b9">9</button>
+  <button onclick="gpress(10)"Class="day d3"id="b10">10</button>
+  <button onclick="gpress(11)" Class="day d4" id="b11">11</button>
+  <button onclick="gpress(12)"Class="day d5"id="b12">12</button>
+  <button onclick="gpress(13)"Class="day d6"id="b13">13</button>
+  <button onclick="gpress(14)"Class="day d7"id="b14">14</button>
+  
+ 
+
+</div>
+<div class="week w3">
+
+ 
+
+  <button onclick="gpress(15)" Class="day d1" id="b15">15</button>
+  <button onclick="gpress(16)"Class="day d2"id="b16">16</button>
+  <button onclick="gpress(17)"Class="day d3"id="b17">17</button>
+  <button onclick="gpress(18)" Class="day d4"id="b18">18</button>
+  <button onclick="gpress(19)"Class="day d5"id="b19">19</button>
+  <button onclick="gpress(20)"Class="day d6"id="b20">20</button>
+  <button onclick="gpress(21)"Class="day d7"id="b21">21</button>
+
+
+
+
+</div>
+<div class="week w4">
+ 
+  <button onclick="gpress(22)"Class="day d6"id="b22">22</button>
+  <button onclick="gpress(23)"Class="day d7"id="b23">23</button>
+  <button onclick="gpress(24)"Class="day d6"id="b24">24</button>
+  <button onclick="gpress(25)"Class="day d7"id="b25">25</button>
+  <button onclick="gpress(26)"Class="day d6"id="b26">26</button>
+  <button onclick="gpress(27)"Class="day d7"id="b27">27</button>
+  <button onclick="gpress(28)"Class="day d6"id="b28">28</button>
+
+
+</div>
+<div class="week w5">
+
+  <button onclick="gpress(29)"Class="day d6"id="b29">29</button>
+  <button onclick="gpress(30)"Class="day d7"id="b30">30</button>
+  <button onclick="gpress(31)"Class="day d6"id="b31">31</button>
+<div style="width:55%"></div>
+
+</div>
+
+<input type="text" id="monitor"placeholder="monitor" readonly>
+</div>
+
+<div class="modal-footer">
+  <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+  <input type="submit" id ="btn_add_dates" class="btn btn-success" value="Add">
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div> <!---------------------------------------------calender ends--- ------------------------------------>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-------------------------------------------------- ADD Modal. HTML -------------------------------------------------->
+  <div id="addItemModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form  id="addItemform">
+          <div class="modal-header">            
+            <h4 class="modal-title">Add Details</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <!-- starting  inputs-->
+<div   class="modal-body">          
+              
+   <div class="form-group">
+    
+    <div id="dateModeKm">
+            <div>
+               <label>Date</label>
+              <input type="number" min="1" max="31"id = "date" class="form-control" required>
+            </div>
+<div class="displayMY">
+<p class="disMonth" id="disMonth"></p>
+<p class="disYear" id="disYear"></p>
+
+</div>
+            <div id="divKm">
+              <label>KM</label>
+              <input autocomplete="off" type="number" id = "km" class="form-control">
+              </div>
+
+              <div class="divMode">
+             
+              <input type="checkbox" id="mode"  >  <i class="fa fa-bus fa-2x" aria-hidden="true"></i>
+             <!-- <input autocomplete="off" type="text" id="mode" class="form-control">-->
+              </div>
+    </div>   
+                        
+        <div id="timeAB">
+                   <div>
+                    <label>Start on</label>
+                    <input autocomplete="off" type="text" id = "timea" class="form-control">
+
+                      </div>
+                    
+                    <div id="endTime">
+                    <label>End on</label>
+                      <input autocomplete="off" type="text" id="timeb" class="form-control">
+                    </div>
+        </div>
+               
+                    <label>From</label><i class="fa fa-university" id="fromI"aria-hidden="true"></i>
+                    
+                     <input autocomplete="off"type="text" id = "from" class="form-control">
+
+                      <label>To</label><i class="fa fa-university" id="toI" aria-hidden="true"></i>
+                      <input autocomplete="off" type="text" id="to" class="form-control">
+    
+              <label>Purpose</label><i id="purI"class="fa fa-paw" aria-hidden="true"></i>
+              <input  autocomplete="off" type="text" id = "purpose" class="form-control">
+
+
+               
+  
+         
+  
+            </div>
+
+             
+            </div> 
+            
+            
+          
+          
+          
+          
+          
+          <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+            <input type="submit" id ="btn_add_item" class="btn btn-success" value="Add">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+ 
+  
+  <!-- -----------------------------Edit Modal. HTML ---------------------------------------------------------------------->
+  <div id="editItemModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id = "editItemForm">
+          <div class="modal-header">            
+            <h4 class="modal-title">Edit Item</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">  
+                
+       
+    
+
+      <div id="editDateModeKmDiv">
+                
+            <div >
+                 <label>Date</label>
+                  <input type="number" min="1" max="31"id = "editdate" class="form-control" required>
+            </div>
+            <div class="displayMY">
+              <p class="disMonth" id="edisMonth"></p>
+              <p class="disYear" id="edisYear"></p>
+              
+              </div>
+            <div id="editKmDiv">
+              <label>KM</label>
+              <input type="number" id = "editkm" class="form-control">
+            </div>
+            
+            <div id="editModeDiv"> 
+             
+             
+                <input type="checkbox" id="eMode"  >  <i class="fa fa-bus fa-2x" aria-hidden="true"></i>
+    
+              
+              
+            </div>   
+  </div>
+               
+      
+          <div id="editTimeAB">
+                      <div>
+                        </i><label>Start on</label>
+                            <input type="text" id = "edittimea" class="form-control">
+                      </div>
+                  
+                      <div id="editEndTimeDiv"> 
+                         <label>End on</label>
+                           <input type="text" id="edittimeb" class="form-control">
+                     
+                          </div>
+
+                          
+          </div>
+
+                
+    
+                
+                  
+                    
+                        <label>From</label>
+                         <input type="text" id = "editfrom" class="form-control">
+                  
+                  
+                   
+                          <label>To</label>
+                          <input type="text" id="editto" class="form-control">
+                    
+               
+                 
+    
+            
+                  <label>Purpose</label>
+                  <input type="text" id = "editpurpose" class="form-control">
+                      
+             
+    
+                
+    
+                  
+     </div>
+ <input type="hidden" name="no" id="no" />  
+
+          <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+            <input type="submit" class="btn btn-success" value="Update">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- ----------------------------------------Delete Modal. HTML-------------------------------------------------- -->
+  <div id="deleteItemModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id ="deleteItemForm">
+          <div class="modal-header">            
+            <h4 class="modal-title">Delete Item</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+         <div class="modal-body">          
+            <p>Are your sure to delete?</p>
+           <p>Entry No:</p> <p id = "deleteno"></p>
+            <p id = "deletedate"></p>
+           
+          </div>
+          <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+            <input type="submit" class="btn btn-danger" value="Delete">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal1">          </div>
+<script type="text/javascript" src="crud.js"></script>
+<footer class="footer">
+    
+    <div class="copy">
+       <div id="imgDiv"></div>
+      <img id="fRoad"src="fRoad.png" alt="Trafic">
+        <div class="container">
+            <a>2021 &copy; All Rights Reserved | Geevar Kollanoor geevar007&trade;</a>
+            
+            <a><i class="fa fa-github-alt"></i></a>
+             <a><i class="fa fa-google-plus"></i></a>
+             <a><i class="fa fa-pinterest"></i></a>
+             <a><i class="fa fa-twitter"></i></a>
+             <a><i class="fa fa-facebook"></i></a>
+             <div >
+   <a  onclick="sRemove()"> <i class="fa fa-cloud-download fa-lg" aria-hidden="true"></i></a>
+              <b><i class="fa fa-comment"></i> 9400110007</b>
+            <a href="#myCalender" id="multiDate"data-toggle="modal"> <i class="fa fa-calendar"></i> Multidate</a>
+          <input type="text" id="myKey" placeholder="++">  
+          </div>
+        </div>
+    
+    </div>
+
+</footer>
+
+
+</div>
+
+
+
+   
+  </body>
+
+
+</html>
